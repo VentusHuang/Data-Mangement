@@ -1,0 +1,41 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">List of Bartenders</h1>
+    <p class="lead">This page show the sell of each tender in different bar</p>
+    <p-dropdown *ngIf="tenderOptions" [ngClass]="{ 'no-option-selected': selectedtender === undefined || selectedtender === null }"
+    placeholder="Filter by tender" [options]="tenderOptions" [(ngModel)]="selectedtender" showClear="true"
+    (onChange)="filterBars($event.value)"></p-dropdown>
+    <p-dropdown *ngIf="barOptions" [ngClass]="{ 'no-option-selected': selectedbar === undefined || selectedbar === null }"
+    placeholder="Filter by bar" [options]="barOptions" [(ngModel)]="selectedbar" showClear="true"
+    (onChange)="filterTenders($event.value)"></p-dropdown>
+    
+  </div>
+</div>
+
+<br>
+
+<div clasee = "container">
+  <p-table [value] = "bartenders"[paginator]="true" [rows]="30">
+    <ng-template pTemplate="header">
+        <tr>
+          <th>Bartender</th>
+          <th>Bar</th>
+          <th>Shift</th>
+          <th>Beer</th>
+          <th>Selling</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bartender>
+        <tr>
+          <td>{{bartender.bar_tender}}</td>
+          <td>{{bartender.bar_name}}</td>
+          <td>{{bartender.shift}}</td>
+          <td>{{bartender.beer}}</td>
+          <td>{{bartender.selling}}</td>
+        </tr>
+    </ng-template>
+  </p-table>
+
+</div>
+
+<br><br>

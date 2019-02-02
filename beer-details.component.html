@@ -1,0 +1,97 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{ beerName }}</h1>
+      <p class="beer-details" *ngIf="manufacturer">
+        Made by <i>{{ manufacturer }}</i>
+      </p>
+    </div>
+  </div>
+  
+  <div class="container">
+    <br>
+    <div>
+      <span class="font-weight-light result-count">Sold at {{ beerLocations?.length }}</span>
+      <p-dropdown class="float-right text-left" *ngIf="filterOptions" [options]="filterOptions" (onChange)="sortBy($event.value)">
+        
+      </p-dropdown>
+    </div>
+    <br>
+    <p-table [value]="beerLocations" sortMode="multiple" sortField="price">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Bar</th>
+          <th>
+            Price
+          </th>
+          <th>Customers</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-bar>
+        <tr>
+          <td><a routerLink="/bars/{{ bar.bar }}">{{ bar.bar }}</a></td>
+          <td>{{ bar.price | currency }}</td>
+          <td>{{ bar.customers }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <br><br>
+    <br><br>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-1"></h1>
+          <p class="lead">Show top 10 bars which sell the most</p>
+        </div>
+      </div>
+    <br><br>
+
+    <p-table [value] = "Beersell">
+        <ng-template pTemplate="header">
+            <tr>
+              <th>Bar</th>
+              <th>Selling</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-Beersell>
+            <tr>
+              <td>{{Beersell.bar}}</td>
+              <td>{{Beersell.selling}}</td>
+            </tr>
+        </ng-template>
+      </p-table>
+
+      <br>
+      <br>
+
+      <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-1"></h1>
+            <p class="lead">Show top 10 drinker of this beer</p>
+          </div>
+        </div>
+      <br><br>
+
+      <p-table [value] = "Rich">
+          <ng-template pTemplate="header">
+              <tr>
+                <th>Drinker</th>
+                <th>Money</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-Rich>
+              <tr>
+                <td>{{Rich.Last_name}}</td>
+                <td>{{Rich.money}}</td>
+              </tr>
+          </ng-template>
+        </p-table>
+
+         <br><br>
+         <br><br>
+         
+
+
+  </div>
+
+  

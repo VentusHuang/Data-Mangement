@@ -1,0 +1,35 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to Bar-Beer-drinker</h1>
+    <p class="lead">This is a test.</p>
+  </div>
+</div>
+
+<div class="container">
+  <p-table [value]="bars">
+    <ng-template  pTemplate = "header">
+        <tr>
+            <th>Name</th>
+            <th>Licencse</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>States</th>
+          </tr>
+    </ng-template>
+    <ng-template pTemplate = "body" let-bar>
+        <tr>
+            <td>
+              <a routerLink="/bars/{{bar.name}}">
+              {{ bar.name }}</a></td>
+            <td>{{ bar.license }}</td>
+            <td>{{ bar.phone }}</td>
+            <td>{{ bar.city }}</td>
+            <td>{{ bar.address }}</td>
+            <td>{{ bar.states }}</td>
+          </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<br><br>
